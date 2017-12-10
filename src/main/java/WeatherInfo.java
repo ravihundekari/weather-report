@@ -1,8 +1,9 @@
-
+import model.Weather;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import utils.Regions;
 
 import java.io.*;
 import java.net.URL;

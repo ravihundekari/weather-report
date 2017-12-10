@@ -1,3 +1,5 @@
+package model;
+
 import java.io.Serializable;
 
 public class Weather implements Serializable {
@@ -7,7 +9,7 @@ public class Weather implements Serializable {
     private String key;
     private float value;
 
-    Weather(String regionCode, String weatherParam, int year, String key, float value) {
+    public Weather(String regionCode, String weatherParam, int year, String key, float value) {
         this.regionCode = regionCode;
         this.weatherParam = weatherParam;
         this.year = year;
@@ -66,3 +68,4 @@ public class Weather implements Serializable {
                 '}';
     }
 }
+
