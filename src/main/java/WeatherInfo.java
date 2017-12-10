@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class WeatherInfo {
-    private static final List<String> regionList = getRegionList();
+    private static final String baseUrl = "https://www.metoffice.gov.uk/climate/uk/summaries/datasets#yearOrdered";
     private static final String COMMA_DELIMITER = ",";
     private static final String NEW_LINE_SEPARATOR = "\n";
     private static final String FILE_HEADER = "region_code,weather_param,year,key,value";
@@ -62,11 +62,11 @@ public class WeatherInfo {
     }
 
     private static void downloadAllFiles() throws IOException {
-        Document doc = Jsoup.connect("https://www.metoffice.gov.uk/climate/uk/summaries/datasets#yearOrdered").get();
+        Document doc = Jsoup.connect(baseUrl).get();
         Elements links = doc.select("a[href]");
         for (Element l : links)
             if (l.attr("abs:href").endsWith(".txt"))
-                for (String region : regionList)
+                for (String region : getRegionList())
                     if (l.attr("title").equals(region))
                         dowloadFile(l, region);
     }
